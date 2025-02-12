@@ -7,7 +7,7 @@ on:
     branches: [main, dev]
   workflow_dispatch:
   schedule:
-    - cron: "23 8 * * *" # Runs every day at midnight
+    - cron: "23 8 * * *" # Runs every day at 8:23 AM
 
 env:
   BACKUP_ENABLED: true
@@ -29,33 +29,45 @@ jobs:
           fi
 
       - name: Checkout repository
-        if: env.BACKUP_ENABLED == 'true'
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
         uses: actions/checkout@v3
 
       - name: Setup Supabase CLI
-        if: env.BACKUP_ENABLED == 'true'
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
         uses: supabase/setup-cli@v1
         with:
           version: latest
 
+      - name: Check Supabase CLI Installation
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
+        run: supabase --version
+
+      - name: Show GitHub Runner IP
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
+        run: curl https://api64.ipify.org
+
+      - name: Test DB Connection
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
+        run: pg_isready -d "$SUPABASE_DB_URL"
+
       - name: Create timestamp folder
-        if: env.BACKUP_ENABLED == 'true'
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
         run: mkdir -p prisma/backups
 
       - name: Backup roles
-        if: env.BACKUP_ENABLED == 'true'
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
         run: supabase db dump --db-url "$SUPABASE_DB_URL" -f prisma/backups/roles.sql --role-only
 
       - name: Backup schema
-        if: env.BACKUP_ENABLED == 'true'
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
         run: supabase db dump --db-url "$SUPABASE_DB_URL" -f prisma/backups/schema.sql
 
       - name: Backup data
-        if: env.BACKUP_ENABLED == 'true'
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
         run: supabase db dump --db-url "$SUPABASE_DB_URL" -f prisma/backups/data.sql --data-only --use-copy
 
       - name: Commit backups
-        if: env.BACKUP_ENABLED == 'true'
+        if: ${{ env.BACKUP_ENABLED == 'true' }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Supabase backup
