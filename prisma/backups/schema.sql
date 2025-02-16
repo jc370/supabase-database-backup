@@ -65,6 +65,17 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA "extensions";
 
 
 
+CREATE TYPE "public"."message_type" AS ENUM (
+    'initial_question',
+    'user_answer',
+    'follow_up_question',
+    'follow_up_answer'
+);
+
+
+ALTER TYPE "public"."message_type" OWNER TO "postgres";
+
+
 CREATE TYPE "public"."question_topic" AS ENUM (
     'Childhood',
     'Family',
@@ -139,6 +150,40 @@ CREATE TABLE IF NOT EXISTS "public"."answers" (
 ALTER TABLE "public"."answers" OWNER TO "postgres";
 
 
+CREATE TABLE IF NOT EXISTS "public"."conversations" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "user_id" "uuid" NOT NULL,
+    "question_id" "uuid" NOT NULL,
+    "created_at" timestamp with time zone DEFAULT "timezone"('utc'::"text", "now"()) NOT NULL,
+    "updated_at" timestamp with time zone DEFAULT "timezone"('utc'::"text", "now"()) NOT NULL,
+    "is_complete" boolean DEFAULT false,
+    "completion_date" timestamp with time zone,
+    "chapter_text" "text"
+);
+
+
+ALTER TABLE "public"."conversations" OWNER TO "postgres";
+
+
+CREATE TABLE IF NOT EXISTS "public"."messages" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "conversation_id" "uuid" NOT NULL,
+    "user_id" "uuid" NOT NULL,
+    "content" "text" NOT NULL,
+    "message_type" "public"."message_type" NOT NULL,
+    "created_at" timestamp with time zone DEFAULT "timezone"('utc'::"text", "now"()) NOT NULL,
+    "updated_at" timestamp with time zone DEFAULT "timezone"('utc'::"text", "now"()) NOT NULL,
+    "has_voice" boolean DEFAULT false,
+    "has_image" boolean DEFAULT false,
+    "voice_url" "text",
+    "image_url" "text",
+    "is_generated" boolean DEFAULT false
+);
+
+
+ALTER TABLE "public"."messages" OWNER TO "postgres";
+
+
 CREATE TABLE IF NOT EXISTS "public"."profiles" (
     "id" "uuid" NOT NULL,
     "email" "text" NOT NULL,
@@ -190,6 +235,21 @@ ALTER TABLE ONLY "public"."answers"
 
 
 
+ALTER TABLE ONLY "public"."conversations"
+    ADD CONSTRAINT "conversations_pkey" PRIMARY KEY ("id");
+
+
+
+ALTER TABLE ONLY "public"."conversations"
+    ADD CONSTRAINT "conversations_user_id_question_id_key" UNIQUE ("user_id", "question_id");
+
+
+
+ALTER TABLE ONLY "public"."messages"
+    ADD CONSTRAINT "messages_pkey" PRIMARY KEY ("id");
+
+
+
 ALTER TABLE ONLY "public"."profiles"
     ADD CONSTRAINT "profiles_pkey" PRIMARY KEY ("id");
 
@@ -210,6 +270,22 @@ ALTER TABLE ONLY "public"."user_questions"
 
 
 
+CREATE INDEX "idx_conversations_question_id" ON "public"."conversations" USING "btree" ("question_id");
+
+
+
+CREATE INDEX "idx_conversations_user_id" ON "public"."conversations" USING "btree" ("user_id");
+
+
+
+CREATE INDEX "idx_messages_conversation_id" ON "public"."messages" USING "btree" ("conversation_id");
+
+
+
+CREATE INDEX "idx_messages_user_id" ON "public"."messages" USING "btree" ("user_id");
+
+
+
 CREATE OR REPLACE TRIGGER "set_completion_date" BEFORE UPDATE ON "public"."answers" FOR EACH ROW EXECUTE FUNCTION "public"."update_completion_date"();
 
 
@@ -221,6 +297,11 @@ ALTER TABLE ONLY "public"."answers"
 
 ALTER TABLE ONLY "public"."answers"
     ADD CONSTRAINT "answers_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id");
+
+
+
+ALTER TABLE ONLY "public"."conversations"
+    ADD CONSTRAINT "conversations_question_id_fkey" FOREIGN KEY ("question_id") REFERENCES "public"."questions"("id");
 
 
 
@@ -264,6 +345,14 @@ CREATE POLICY "Users can insert their own answers" ON "public"."answers" FOR INS
 
 
 
+CREATE POLICY "Users can insert their own conversations" ON "public"."conversations" FOR INSERT TO "authenticated" WITH CHECK (("user_id" = "auth"."uid"()));
+
+
+
+CREATE POLICY "Users can insert their own messages" ON "public"."messages" FOR INSERT TO "authenticated" WITH CHECK (("user_id" = "auth"."uid"()));
+
+
+
 CREATE POLICY "Users can insert their own profile." ON "public"."profiles" FOR INSERT WITH CHECK (("auth"."uid"() = "id"));
 
 
@@ -280,11 +369,27 @@ CREATE POLICY "Users can read own answers" ON "public"."answers" FOR SELECT TO "
 
 
 
+CREATE POLICY "Users can read their own conversations" ON "public"."conversations" FOR SELECT TO "authenticated" USING (("user_id" = "auth"."uid"()));
+
+
+
+CREATE POLICY "Users can read their own messages" ON "public"."messages" FOR SELECT TO "authenticated" USING (("user_id" = "auth"."uid"()));
+
+
+
 CREATE POLICY "Users can update own answers" ON "public"."answers" FOR UPDATE TO "authenticated" USING (("user_id" = "auth"."uid"()));
 
 
 
 CREATE POLICY "Users can update their own answers" ON "public"."answers" FOR UPDATE TO "authenticated" USING (("auth"."uid"() = "user_id"));
+
+
+
+CREATE POLICY "Users can update their own conversations" ON "public"."conversations" FOR UPDATE TO "authenticated" USING (("user_id" = "auth"."uid"()));
+
+
+
+CREATE POLICY "Users can update their own messages" ON "public"."messages" FOR UPDATE TO "authenticated" USING (("user_id" = "auth"."uid"()));
 
 
 
@@ -297,6 +402,12 @@ CREATE POLICY "Users can view their own answers" ON "public"."answers" FOR SELEC
 
 
 ALTER TABLE "public"."answers" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."conversations" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."messages" ENABLE ROW LEVEL SECURITY;
 
 
 ALTER TABLE "public"."profiles" ENABLE ROW LEVEL SECURITY;
@@ -527,6 +638,18 @@ GRANT ALL ON FUNCTION "public"."update_completion_date"() TO "service_role";
 GRANT ALL ON TABLE "public"."answers" TO "anon";
 GRANT ALL ON TABLE "public"."answers" TO "authenticated";
 GRANT ALL ON TABLE "public"."answers" TO "service_role";
+
+
+
+GRANT ALL ON TABLE "public"."conversations" TO "anon";
+GRANT ALL ON TABLE "public"."conversations" TO "authenticated";
+GRANT ALL ON TABLE "public"."conversations" TO "service_role";
+
+
+
+GRANT ALL ON TABLE "public"."messages" TO "anon";
+GRANT ALL ON TABLE "public"."messages" TO "authenticated";
+GRANT ALL ON TABLE "public"."messages" TO "service_role";
 
 
 
