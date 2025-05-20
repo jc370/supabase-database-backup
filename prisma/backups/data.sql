@@ -133,6 +133,10 @@ COPY "auth"."audit_log_entries" ("instance_id", "id", "payload", "created_at", "
 00000000-0000-0000-0000-000000000000	b89ec5fe-1260-4907-bfe1-d2fe52edab46	{"action":"token_revoked","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-04-14 10:11:30.93189+00	
 00000000-0000-0000-0000-000000000000	90a9d150-4d6d-4854-93ae-0d2dc838dde7	{"action":"token_refreshed","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-04-14 13:27:27.431302+00	
 00000000-0000-0000-0000-000000000000	c0d3150f-cea1-42b2-ba73-70058267137d	{"action":"token_revoked","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-04-14 13:27:27.434049+00	
+00000000-0000-0000-0000-000000000000	a0334c9f-7532-419c-bc5a-faadad03a3b9	{"action":"token_refreshed","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-05-19 14:14:23.804427+00	
+00000000-0000-0000-0000-000000000000	265087ee-4042-4fec-bb94-b5927f93ed07	{"action":"token_revoked","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-05-19 14:14:23.831011+00	
+00000000-0000-0000-0000-000000000000	3c53ee06-fff5-4628-8be5-b0cd8ebad01f	{"action":"token_refreshed","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-05-19 16:37:20.256459+00	
+00000000-0000-0000-0000-000000000000	03267c88-28b1-4824-8f8d-2f27facbc52c	{"action":"token_revoked","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-05-19 16:37:20.277273+00	
 \.
 
 
@@ -149,7 +153,7 @@ COPY "auth"."flow_state" ("id", "user_id", "auth_code", "code_challenge_method",
 --
 
 COPY "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at", "is_anonymous") FROM stdin;
-00000000-0000-0000-0000-000000000000	fa29c2ff-5704-49a3-9969-a66f656a0331	authenticated	authenticated	jonathanchoat@hotmail.co.uk	$2a$10$Xiz6q4PrdIi8vLYUW78p0Ory1nsdeZGSnITxHUn6zYGoT6fzY0qSi	2025-01-27 13:50:38.585731+00	\N		\N		\N			\N	2025-01-27 19:11:05.228458+00	{"provider": "email", "providers": ["email"]}	{"sub": "fa29c2ff-5704-49a3-9969-a66f656a0331", "email": "jonathanchoat@hotmail.co.uk", "full_name": "Jonathan", "email_verified": true, "phone_verified": false}	\N	2025-01-27 13:50:38.525532+00	2025-04-14 13:27:27.438399+00	\N	\N			\N		0	\N		\N	f	\N	f
+00000000-0000-0000-0000-000000000000	fa29c2ff-5704-49a3-9969-a66f656a0331	authenticated	authenticated	jonathanchoat@hotmail.co.uk	$2a$10$Xiz6q4PrdIi8vLYUW78p0Ory1nsdeZGSnITxHUn6zYGoT6fzY0qSi	2025-01-27 13:50:38.585731+00	\N		\N		\N			\N	2025-01-27 19:11:05.228458+00	{"provider": "email", "providers": ["email"]}	{"sub": "fa29c2ff-5704-49a3-9969-a66f656a0331", "email": "jonathanchoat@hotmail.co.uk", "full_name": "Jonathan", "email_verified": true, "phone_verified": false}	\N	2025-01-27 13:50:38.525532+00	2025-05-19 16:37:20.30188+00	\N	\N			\N		0	\N		\N	f	\N	f
 \.
 
 
@@ -176,7 +180,7 @@ COPY "auth"."instances" ("id", "uuid", "raw_base_config", "created_at", "updated
 
 COPY "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "factor_id", "aal", "not_after", "refreshed_at", "user_agent", "ip", "tag") FROM stdin;
 4714f923-a8fa-41b2-b7bf-92a57f648156	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 14:38:37.969794+00	2025-01-27 14:38:37.969794+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N
-271b788b-f16b-4cdd-aaa3-de1ad9079f9b	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 15:12:01.576367+00	2025-04-14 13:27:27.440545+00	\N	aal1	\N	2025-04-14 13:27:27.440472	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36	146.199.144.133	\N
+271b788b-f16b-4cdd-aaa3-de1ad9079f9b	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 15:12:01.576367+00	2025-05-19 16:37:20.312754+00	\N	aal1	\N	2025-05-19 16:37:20.312632	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36	92.236.50.30	\N
 5c465a3c-7e03-4b0f-8ab8-9b17795553f1	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:09:40.542354+00	2025-01-27 19:09:40.542354+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N
 451fcdee-fd3f-45cb-a23e-3b55f58541d9	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:10:07.922005+00	2025-01-27 19:10:07.922005+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N
 8675a992-2b07-4730-86d5-e68dd5eb21e8	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:10:37.691807+00	2025-01-27 19:10:37.691807+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N
@@ -291,7 +295,9 @@ COPY "auth"."refresh_tokens" ("instance_id", "id", "token", "user_id", "revoked"
 00000000-0000-0000-0000-000000000000	56	e-cMi6IsZp0mrtPSbyMI-A	fa29c2ff-5704-49a3-9969-a66f656a0331	t	2025-04-13 17:14:29.39268+00	2025-04-14 07:52:47.375803+00	fBCAeGZiCiZkzxDPu8CDYQ	271b788b-f16b-4cdd-aaa3-de1ad9079f9b
 00000000-0000-0000-0000-000000000000	57	6J_WlG0jDV7YGlsIYFlaZg	fa29c2ff-5704-49a3-9969-a66f656a0331	t	2025-04-14 07:52:47.387751+00	2025-04-14 10:11:30.933124+00	e-cMi6IsZp0mrtPSbyMI-A	271b788b-f16b-4cdd-aaa3-de1ad9079f9b
 00000000-0000-0000-0000-000000000000	58	W0oLhS29Hmi-4qWgGjj4vg	fa29c2ff-5704-49a3-9969-a66f656a0331	t	2025-04-14 10:11:30.938488+00	2025-04-14 13:27:27.434571+00	6J_WlG0jDV7YGlsIYFlaZg	271b788b-f16b-4cdd-aaa3-de1ad9079f9b
-00000000-0000-0000-0000-000000000000	59	j3N98ktof0b5z2XzZjDF6A	fa29c2ff-5704-49a3-9969-a66f656a0331	f	2025-04-14 13:27:27.43713+00	2025-04-14 13:27:27.43713+00	W0oLhS29Hmi-4qWgGjj4vg	271b788b-f16b-4cdd-aaa3-de1ad9079f9b
+00000000-0000-0000-0000-000000000000	59	j3N98ktof0b5z2XzZjDF6A	fa29c2ff-5704-49a3-9969-a66f656a0331	t	2025-04-14 13:27:27.43713+00	2025-05-19 14:14:23.831739+00	W0oLhS29Hmi-4qWgGjj4vg	271b788b-f16b-4cdd-aaa3-de1ad9079f9b
+00000000-0000-0000-0000-000000000000	60	ejbulaxph6u4	fa29c2ff-5704-49a3-9969-a66f656a0331	t	2025-05-19 14:14:23.856077+00	2025-05-19 16:37:20.279466+00	j3N98ktof0b5z2XzZjDF6A	271b788b-f16b-4cdd-aaa3-de1ad9079f9b
+00000000-0000-0000-0000-000000000000	61	zjx22eoshpif	fa29c2ff-5704-49a3-9969-a66f656a0331	f	2025-05-19 16:37:20.295692+00	2025-05-19 16:37:20.295692+00	ejbulaxph6u4	271b788b-f16b-4cdd-aaa3-de1ad9079f9b
 \.
 
 
@@ -324,14 +330,6 @@ COPY "auth"."saml_relay_states" ("id", "sso_provider_id", "request_id", "for_ema
 --
 
 COPY "auth"."sso_domains" ("id", "sso_provider_id", "domain", "created_at", "updated_at") FROM stdin;
-\.
-
-
---
--- Data for Name: key; Type: TABLE DATA; Schema: pgsodium; Owner: supabase_admin
---
-
-COPY "pgsodium"."key" ("id", "status", "created", "expires", "key_type", "key_id", "key_context", "name", "associated_data", "raw_key", "raw_key_nonce", "parent_key", "comment", "user_data") FROM stdin;
 \.
 
 
@@ -459,10 +457,11 @@ fb3c3cad-e067-4f13-8a94-feaaf449cb9e	fa29c2ff-5704-49a3-9969-a66f656a0331	a753cf
 --
 
 COPY "public"."conversations" ("id", "user_id", "question_id", "created_at", "updated_at", "is_complete", "completion_date", "chapter_text") FROM stdin;
-9cf1816b-2694-4c97-bf74-23c3e0003827	fa29c2ff-5704-49a3-9969-a66f656a0331	2aba2641-06a8-4512-89ff-9228813e5ddf	2025-02-15 21:16:40.344514+00	2025-02-15 21:16:40.344514+00	f	\N	\N
 0a925a63-a67a-40d8-9b87-84962652e995	fa29c2ff-5704-49a3-9969-a66f656a0331	23675049-b2ee-4cab-81d1-ad3b421f16d6	2025-02-15 21:16:40.344514+00	2025-02-15 21:16:40.344514+00	f	\N	### Chapter: The Modern Architect\n\nReflecting on my early years, I realise that much of my curiosity was sparked by the way toys and gadgets interlinked with my imagination. It’s amusing to think about it now, but analysing AWS setups feels akin to those childhood moments of dismantling and rebuilding toys to understand their inner workings. These early experiences laid the groundwork for my later fascination with technology and architecture.\n\nAs an adult, I've found myself navigating the realms of modern web applications, where the architectural landscape is as intricate and evolving as a child's imaginative play. My professional journey led me to work with AWS setups, where I noticed a tendency to incorporate over-provisioned elements, akin to pieces of a toy scattered yet still assembled without coherent purpose. Many setups embraced traditional server infrastructure like Elastic Beanstalk more out of habit than necessity.\n\nThis approach struck me as outdated for the innovative era we now inhabit, where serverless applications ought to be the focal point. Building applications in a serverless manner is not merely a modern trend but a step towards efficiency and elegance, principles I valued from those early days of meticulously arranging toy blocks just so.\n\nWhile reflecting on my career path, it becomes clear that embracing serverless architecture represents more than a technical necessity; it is an alignment with a philosophy of minimalism and precision. Each piece must have a functional place and a purpose, supporting the broader structure without excess.\n\nIn this journey, I've learned that both in play and in profession, the art of architecture—whether for childhood toys or digital infrastructures—centres upon the delicate balance of necessity and creativity. It is this very balance that continues to propel my work, ever-evolving like the toys of my youth.
 8cba393f-8f06-4afa-b9e6-a0f46af9b011	fa29c2ff-5704-49a3-9969-a66f656a0331	a753cfad-07ab-4b9d-b5ad-51c26728dd28	2025-02-15 21:16:40.344514+00	2025-02-15 21:16:40.344514+00	t	2025-02-09 17:19:59.926738+00	During the development of my recording software, I implemented a unique feature that significantly improved the quality of responses I received. To begin with, I added a timer that displayed the duration of the recording in real-time. Alongside this, I took the somewhat unconventional step of disabling the stop button for the initial 20 seconds of recording. Instead of being able to halt their narrative immediately, users were presented with a countdown on the stop button, indicating how long it would be before it became operational.\n\nYou might wonder why I decided to enforce this brief pause at the outset of each recording session. The solution was born from a recurring challenge I faced. When individuals responded to questions, their answers often lacked the necessary breadth and detail. More often than not, they would provide concise that, while informative, were insufficiently descriptive. \n\nThis posed a problem when it came time to weave these snippets into a cohesive story. I realised that to construct a full, compelling chapter, I needed more than just the bare bones of a response. By ensuring that the stop button was inactive for those first critical seconds, I encouraged respondents to delve deeper and elaborate more fully on their initial thoughts. This simple yet effective modification helped generate responses rich in content and texture, transforming fragments into narratives that truly resonated.
+9cf1816b-2694-4c97-bf74-23c3e0003827	fa29c2ff-5704-49a3-9969-a66f656a0331	2aba2641-06a8-4512-89ff-9228813e5ddf	2025-02-15 21:16:40.344514+00	2025-02-15 21:16:40.344514+00	f	\N	### Chapter: Foundations of Happiness\n\nReflecting on my childhood, there’s a particular moment that stands out, an event that truly encapsulates a sense of happiness and contentment. As I grew up, I was often engrossed in the world of technology and data, finding joy in building systems and understanding complexities. I remember, quite vividly, the day I first delved into SQL queries. \n\nIt was more than just dry code—it was the unveiling of a world where everything made sense, a complete database schema laid before me like an intricate puzzle waiting to be solved. The output of my first SQL query was enlightening. It detailed various tables, each with its own story and purpose. The ‘Answers’ table captured users' responses to questions, safeguarding a tapestry of chapter texts and media files. Beside it, the ‘Profiles’ table held the essence of individuals, their information preserved like cherished keepsakes. Then there was the ‘Questions’ table, a repository of inquiries, each ready for exploration and engagement.\n\nThat moment spent sifting through data brought with it unparalleled satisfaction. I felt a connection, a sense of control over this art of ordering chaos. In that instant, I learned not just about databases but also about myself—my curiosity, my penchant for problem-solving, and the joy that comes from understanding. It was a frame of reference that would shape much of my future.\n\nLittle did I know then that these small victories would lay the groundwork for my aspirations. They were stepping stones on a path toward a greater passion for technology, one that would ultimately intertwine with many aspects of my life. I often think back to those early experiences, a reminder of the serene happiness that comes from simplicity and clarity.
 67893ad1-c06b-44a7-8e56-4e0a8fb1b4cc	fa29c2ff-5704-49a3-9969-a66f656a0331	5e9c5bc4-b65f-4cae-a7d1-18e0f43d0286	2025-02-15 21:23:26.789352+00	2025-02-15 21:23:26.789352+00	t	2025-02-15 22:34:30.496+00	### Chapter: Unravelling the Glitches\n\nAs I settled into the rhythm of my work, there was a particular challenge that stood out: the recording functionality of our application. It was during one of those long afternoons, the kind where the glow of the computer screen serves as almost the sole illumination, that I realised we had a problem on our hands. \n\nI focused intently on the issue, dissecting every aspect of the conversation ID usage in the answer component. It became clear that we weren’t properly setting the conversation ID in the state when the conversation data was received. The real crux of the matter lay in our oversight; we weren’t uploading the conversation ID state at the moment the conversation data loaded. It was a simple mistake, yet one that had complex repercussions. \n\nIn my quest for a solution, I approached the task with the mindset of a detective, tracing through the lines of code, seeking the source of our troubles. I had a feeling that the error stemmed from using the .single method while querying the conversations table. The glaring issue was this: when no conversations existed for the user and their questions, chaos ensued. It was then that clarity washed over me. We needed to create a conversation, should one not already exist.\n\nLetting my fingers dance across the keyboard, I set about fixing the issue in both components. The solution was straightforward—changing the method from .single to maybe .single. This small adjustment held the promise of alleviating the error that plagued our system whenever no rows were found. \n\nAs I implemented this change, a wave of satisfaction washed over me. The sense of triumph that accompanied this victory was palpable. After grappling with the error, it felt exhilarating to finally resolve it, one small glitch at a time. In that moment, I realised the importance of persistence and attention to detail in my work. Each challenge was not just a hurdle but an opportunity to learn and grow.
+3b3a2fbc-8b0d-44cc-a16f-7383f4a45f62	fa29c2ff-5704-49a3-9969-a66f656a0331	1b4da9b3-a725-454a-acfc-2d1f4659a3ac	2025-05-19 16:38:17.979244+00	2025-05-19 16:38:17.979244+00	f	\N	\N
 \.
 
 
@@ -505,6 +504,10 @@ de46c958-7272-46a8-8cfe-2167cb82e953	fa29c2ff-5704-49a3-9969-a66f656a0331	5e9c5b
 b94a1bfc-6f33-4ba2-bc3f-1c66f7ba25cd	fa29c2ff-5704-49a3-9969-a66f656a0331	a753cfad-07ab-4b9d-b5ad-51c26728dd28	2025-02-07 18:01:41.892816+00
 f5382c91-eb7a-42e9-bf6e-1ea46b54d605	fa29c2ff-5704-49a3-9969-a66f656a0331	23675049-b2ee-4cab-81d1-ad3b421f16d6	2025-02-10 07:32:24.668814+00
 5af1de1a-364e-4438-9fd2-ea9ef00a4811	fa29c2ff-5704-49a3-9969-a66f656a0331	2aba2641-06a8-4512-89ff-9228813e5ddf	2025-02-10 07:32:29.416581+00
+eca5b905-09be-44aa-99c6-4dd5a92cec28	fa29c2ff-5704-49a3-9969-a66f656a0331	7baf1c7f-8b28-4df8-af43-4d2a8e460467	2025-05-19 16:38:00.819776+00
+995e70b3-ecc9-4cfb-b070-144716ae5028	fa29c2ff-5704-49a3-9969-a66f656a0331	1b4da9b3-a725-454a-acfc-2d1f4659a3ac	2025-05-19 16:38:01.529818+00
+b95f20b4-19a6-45ce-aea0-436e1f9ceed5	fa29c2ff-5704-49a3-9969-a66f656a0331	c7c807ce-830e-474e-a48c-a238a8db3e80	2025-05-19 16:38:02.228243+00
+7ce4d696-1cdc-477f-8f75-952a36ee6d66	fa29c2ff-5704-49a3-9969-a66f656a0331	b6058d58-44e1-4a8e-81b9-6c2831425292	2025-05-19 16:38:03.21119+00
 \.
 
 
@@ -543,25 +546,10 @@ COPY "storage"."s3_multipart_uploads_parts" ("id", "upload_id", "size", "part_nu
 
 
 --
--- Data for Name: secrets; Type: TABLE DATA; Schema: vault; Owner: supabase_admin
---
-
-COPY "vault"."secrets" ("id", "name", "description", "secret", "key_id", "nonce", "created_at", "updated_at") FROM stdin;
-\.
-
-
---
 -- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
 --
 
-SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 59, true);
-
-
---
--- Name: key_key_id_seq; Type: SEQUENCE SET; Schema: pgsodium; Owner: supabase_admin
---
-
-SELECT pg_catalog.setval('"pgsodium"."key_key_id_seq"', 1, false);
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 61, true);
 
 
 --
