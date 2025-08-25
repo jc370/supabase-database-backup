@@ -516,8 +516,16 @@ b95f20b4-19a6-45ce-aea0-436e1f9ceed5	fa29c2ff-5704-49a3-9969-a66f656a0331	c7c807
 -- Data for Name: buckets; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
 --
 
-COPY "storage"."buckets" ("id", "name", "owner", "created_at", "updated_at", "public", "avif_autodetection", "file_size_limit", "allowed_mime_types", "owner_id") FROM stdin;
-chapter-images	chapter-images	\N	2025-02-09 15:55:50.052415+00	2025-02-09 15:55:50.052415+00	t	f	\N	\N	\N
+COPY "storage"."buckets" ("id", "name", "owner", "created_at", "updated_at", "public", "avif_autodetection", "file_size_limit", "allowed_mime_types", "owner_id", "type") FROM stdin;
+chapter-images	chapter-images	\N	2025-02-09 15:55:50.052415+00	2025-02-09 15:55:50.052415+00	t	f	\N	\N	\N	STANDARD
+\.
+
+
+--
+-- Data for Name: buckets_analytics; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."buckets_analytics" ("id", "type", "format", "created_at", "updated_at") FROM stdin;
 \.
 
 
@@ -525,8 +533,17 @@ chapter-images	chapter-images	\N	2025-02-09 15:55:50.052415+00	2025-02-09 15:55:
 -- Data for Name: objects; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
 --
 
-COPY "storage"."objects" ("id", "bucket_id", "name", "owner", "created_at", "updated_at", "last_accessed_at", "metadata", "version", "owner_id", "user_metadata") FROM stdin;
-5443d833-9bd2-400b-a170-6e43c11e2350	chapter-images	fa29c2ff-5704-49a3-9969-a66f656a0331/fb3c3cad-e067-4f13-8a94-feaaf449cb9e-1739119598888.png	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-02-09 16:46:38.911206+00	2025-02-09 16:46:38.911206+00	2025-02-09 16:46:38.911206+00	{"eTag": "\\"fd511e3f302dbade15c315c3be593ced\\"", "size": 487645, "mimetype": "image/png", "cacheControl": "max-age=3600", "lastModified": "2025-02-09T16:46:39.000Z", "contentLength": 487645, "httpStatusCode": 200}	df803ef5-a4a5-4318-8526-6cc5d9d488bb	fa29c2ff-5704-49a3-9969-a66f656a0331	{}
+COPY "storage"."objects" ("id", "bucket_id", "name", "owner", "created_at", "updated_at", "last_accessed_at", "metadata", "version", "owner_id", "user_metadata", "level") FROM stdin;
+5443d833-9bd2-400b-a170-6e43c11e2350	chapter-images	fa29c2ff-5704-49a3-9969-a66f656a0331/fb3c3cad-e067-4f13-8a94-feaaf449cb9e-1739119598888.png	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-02-09 16:46:38.911206+00	2025-08-25 06:03:53.426566+00	2025-02-09 16:46:38.911206+00	{"eTag": "\\"fd511e3f302dbade15c315c3be593ced\\"", "size": 487645, "mimetype": "image/png", "cacheControl": "max-age=3600", "lastModified": "2025-02-09T16:46:39.000Z", "contentLength": 487645, "httpStatusCode": 200}	df803ef5-a4a5-4318-8526-6cc5d9d488bb	fa29c2ff-5704-49a3-9969-a66f656a0331	{}	2
+\.
+
+
+--
+-- Data for Name: prefixes; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."prefixes" ("bucket_id", "name", "created_at", "updated_at") FROM stdin;
+chapter-images	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-08-25 06:03:53.341612+00	2025-08-25 06:03:53.341612+00
 \.
 
 
