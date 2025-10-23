@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict LVjTh0Kg7CipG8hYR8YnxxpmJUaDAgdZoCD2Ojm0rxNxzz249YhBgGcikM3sb5m
+-- \restrict QN89choxOS0o8tLYQnjBoxahfVs6XSTwtL7i7TnXSfDLzltfXiWRIN6aFxr4F0A
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -600,6 +600,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 61, true);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict LVjTh0Kg7CipG8hYR8YnxxpmJUaDAgdZoCD2Ojm0rxNxzz249YhBgGcikM3sb5m
+-- \unrestrict QN89choxOS0o8tLYQnjBoxahfVs6XSTwtL7i7TnXSfDLzltfXiWRIN6aFxr4F0A
 
 RESET ALL;
