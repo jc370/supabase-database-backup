@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict EpRJayDUDBKLuUy2kaN7HLTWPPvIDg11rL7UD7nO5iZD3xYlZ9xt3BTl0gFXttV
+-- \restrict KGxWp8hrUN53CXN38oxXIneMB6uuLgmQDhMRd9rr8EQwCbKACU0DhZlyYsv9B4r
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -189,16 +189,16 @@ COPY "auth"."oauth_clients" ("id", "client_secret_hash", "registration_type", "r
 -- Data for Name: sessions; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
 --
 
-COPY "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "factor_id", "aal", "not_after", "refreshed_at", "user_agent", "ip", "tag", "oauth_client_id") FROM stdin;
-4714f923-a8fa-41b2-b7bf-92a57f648156	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 14:38:37.969794+00	2025-01-27 14:38:37.969794+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N
-271b788b-f16b-4cdd-aaa3-de1ad9079f9b	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 15:12:01.576367+00	2025-05-19 16:37:20.312754+00	\N	aal1	\N	2025-05-19 16:37:20.312632	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36	92.236.50.30	\N	\N
-5c465a3c-7e03-4b0f-8ab8-9b17795553f1	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:09:40.542354+00	2025-01-27 19:09:40.542354+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N
-451fcdee-fd3f-45cb-a23e-3b55f58541d9	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:10:07.922005+00	2025-01-27 19:10:07.922005+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N
-8675a992-2b07-4730-86d5-e68dd5eb21e8	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:10:37.691807+00	2025-01-27 19:10:37.691807+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N
-3c901049-0b5c-4bed-be86-6a258ba70ce1	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:10:54.565533+00	2025-01-27 19:10:54.565533+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N
-e388cc87-288a-40ab-baec-c4a6f7d33982	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:11:05.228526+00	2025-01-27 19:11:05.228526+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N
-5ebd89fe-24dc-4957-a366-0ac860e21f87	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 13:54:55.405174+00	2025-01-28 21:37:50.754411+00	\N	aal1	\N	2025-01-28 21:37:50.75434	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N
-2f6f70ae-7e3e-4376-af7f-e7c680d2c5e9	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 13:50:38.600839+00	2025-04-13 12:13:14.898097+00	\N	aal1	\N	2025-04-13 12:13:14.898021	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36	92.236.50.30	\N	\N
+COPY "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "factor_id", "aal", "not_after", "refreshed_at", "user_agent", "ip", "tag", "oauth_client_id", "refresh_token_hmac_key", "refresh_token_counter") FROM stdin;
+4714f923-a8fa-41b2-b7bf-92a57f648156	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 14:38:37.969794+00	2025-01-27 14:38:37.969794+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N	\N	\N
+271b788b-f16b-4cdd-aaa3-de1ad9079f9b	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 15:12:01.576367+00	2025-05-19 16:37:20.312754+00	\N	aal1	\N	2025-05-19 16:37:20.312632	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36	92.236.50.30	\N	\N	\N	\N
+5c465a3c-7e03-4b0f-8ab8-9b17795553f1	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:09:40.542354+00	2025-01-27 19:09:40.542354+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N	\N	\N
+451fcdee-fd3f-45cb-a23e-3b55f58541d9	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:10:07.922005+00	2025-01-27 19:10:07.922005+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N	\N	\N
+8675a992-2b07-4730-86d5-e68dd5eb21e8	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:10:37.691807+00	2025-01-27 19:10:37.691807+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N	\N	\N
+3c901049-0b5c-4bed-be86-6a258ba70ce1	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:10:54.565533+00	2025-01-27 19:10:54.565533+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N	\N	\N
+e388cc87-288a-40ab-baec-c4a6f7d33982	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 19:11:05.228526+00	2025-01-27 19:11:05.228526+00	\N	aal1	\N	\N	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N	\N	\N
+5ebd89fe-24dc-4957-a366-0ac860e21f87	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 13:54:55.405174+00	2025-01-28 21:37:50.754411+00	\N	aal1	\N	2025-01-28 21:37:50.75434	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	92.236.50.30	\N	\N	\N	\N
+2f6f70ae-7e3e-4376-af7f-e7c680d2c5e9	fa29c2ff-5704-49a3-9969-a66f656a0331	2025-01-27 13:50:38.600839+00	2025-04-13 12:13:14.898097+00	\N	aal1	\N	2025-04-13 12:13:14.898021	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36	92.236.50.30	\N	\N	\N	\N
 \.
 
 
@@ -223,7 +223,7 @@ e388cc87-288a-40ab-baec-c4a6f7d33982	2025-01-27 19:11:05.230408+00	2025-01-27 19
 -- Data for Name: mfa_factors; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
 --
 
-COPY "auth"."mfa_factors" ("id", "user_id", "friendly_name", "factor_type", "status", "created_at", "updated_at", "secret", "phone", "last_challenged_at", "web_authn_credential", "web_authn_aaguid") FROM stdin;
+COPY "auth"."mfa_factors" ("id", "user_id", "friendly_name", "factor_type", "status", "created_at", "updated_at", "secret", "phone", "last_challenged_at", "web_authn_credential", "web_authn_aaguid", "last_webauthn_challenge_data") FROM stdin;
 \.
 
 
@@ -600,6 +600,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 61, true);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict EpRJayDUDBKLuUy2kaN7HLTWPPvIDg11rL7UD7nO5iZD3xYlZ9xt3BTl0gFXttV
+-- \unrestrict KGxWp8hrUN53CXN38oxXIneMB6uuLgmQDhMRd9rr8EQwCbKACU0DhZlyYsv9B4r
 
 RESET ALL;
