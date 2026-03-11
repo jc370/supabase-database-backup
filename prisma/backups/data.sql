@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict BrTQEZ5fzF3Gs3RT4pQZJy7Hd0ddpteWBu3ow8mN8gnBb7JtKS62EndM3stdiHk
+-- \restrict xRRhmrnBPrQ4oZKiABvTl7npw4wlt76euwBeZseNJ242AE6GJehlw12NhBJRCb7
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -140,6 +140,14 @@ COPY "auth"."audit_log_entries" ("instance_id", "id", "payload", "created_at", "
 00000000-0000-0000-0000-000000000000	265087ee-4042-4fec-bb94-b5927f93ed07	{"action":"token_revoked","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-05-19 14:14:23.831011+00	
 00000000-0000-0000-0000-000000000000	3c53ee06-fff5-4628-8be5-b0cd8ebad01f	{"action":"token_refreshed","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-05-19 16:37:20.256459+00	
 00000000-0000-0000-0000-000000000000	03267c88-28b1-4824-8f8d-2f27facbc52c	{"action":"token_revoked","actor_id":"fa29c2ff-5704-49a3-9969-a66f656a0331","actor_name":"Jonathan","actor_username":"jonathanchoat@hotmail.co.uk","actor_via_sso":false,"log_type":"token"}	2025-05-19 16:37:20.277273+00	
+\.
+
+
+--
+-- Data for Name: custom_oauth_providers; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."custom_oauth_providers" ("id", "provider_type", "identifier", "name", "client_id", "client_secret", "acceptable_client_ids", "scopes", "pkce_enabled", "attribute_mapping", "authorization_params", "enabled", "email_optional", "issuer", "discovery_url", "skip_nonce_check", "cached_discovery", "discovery_cached_at", "authorization_url", "token_url", "userinfo_url", "jwks_uri", "created_at", "updated_at") FROM stdin;
 \.
 
 
@@ -608,6 +616,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 61, true);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict BrTQEZ5fzF3Gs3RT4pQZJy7Hd0ddpteWBu3ow8mN8gnBb7JtKS62EndM3stdiHk
+-- \unrestrict xRRhmrnBPrQ4oZKiABvTl7npw4wlt76euwBeZseNJ242AE6GJehlw12NhBJRCb7
 
 RESET ALL;
