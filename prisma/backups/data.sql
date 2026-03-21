@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict uHHtlcTR1zrW896pMRrX4yBbJAHJwVEgSsA9IYEYQgIqs90DWPofpRgs7LXQejY
+-- \restrict b1Vat5eimRGoNWDWXhDXULjYI6GbPE4Gc0ZGui3g9XyCJcXOAo2HYjtDFggfXaT
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -377,6 +377,22 @@ COPY "auth"."sso_domains" ("id", "sso_provider_id", "domain", "created_at", "upd
 
 
 --
+-- Data for Name: webauthn_challenges; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."webauthn_challenges" ("id", "user_id", "challenge_type", "session_data", "created_at", "expires_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: webauthn_credentials; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."webauthn_credentials" ("id", "user_id", "credential_id", "public_key", "attestation_type", "aaguid", "sign_count", "transports", "backup_eligible", "backed_up", "friendly_name", "created_at", "updated_at", "last_used_at") FROM stdin;
+\.
+
+
+--
 -- Data for Name: questions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -616,6 +632,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 61, true);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict uHHtlcTR1zrW896pMRrX4yBbJAHJwVEgSsA9IYEYQgIqs90DWPofpRgs7LXQejY
+-- \unrestrict b1Vat5eimRGoNWDWXhDXULjYI6GbPE4Gc0ZGui3g9XyCJcXOAo2HYjtDFggfXaT
 
 RESET ALL;
